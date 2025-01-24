@@ -1,5 +1,4 @@
-import scadjs from 'scad-js';
-const { cylinder, difference, sphere } = scadjs
+import { cylinder, difference, sphere } from 'scad-js'
 
 const size = 50;
 const hole = size / 2;
