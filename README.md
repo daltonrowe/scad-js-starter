@@ -1,5 +1,12 @@
 # SCADESM Starter
 
+TODO:
+
+- Reset index and constants file
+- Reset readme
+- Add index screenshot to readme
+- OpenSCAD Integration Docs
+
 ## Getting Started
 
 ```sh
