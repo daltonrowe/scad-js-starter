@@ -1,11 +1,15 @@
 {
-  "name": "scad-js-starter",
+  "name": "object-keyhook",
   "scripts": {
-    "build": "node build.js",
-    "dev": "node --watch-path=src build.js"
+    "dev": "node scripts/dev.js",
+    "lint": "biome check --write --unsafe",
+    "render": "node scripts/render.js",
+    "publish": "node scripts/publish.js",
+    "reset": "node scripts/reset.js"
   },
   "type": "module",
   "dependencies": {
+    "@biomejs/biome": "^1.9.4",
     "scad-js": "git@github.com:daltonrowe/scad-js-esm.git"
   },
   "version": "1.0.0",

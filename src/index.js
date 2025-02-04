@@ -1,5 +1,7 @@
-import logo from './components/logo.js';
+import { union } from "scad-js";
+import body from "./components/body.js";
+import hooks from "./components/hooks.js";
 
 export default function () {
-  return logo()
+  return union(body(), hooks());
 }
