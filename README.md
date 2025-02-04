@@ -6,6 +6,7 @@ TODO:
 - Reset readme
 - Add index screenshot to readme
 - OpenSCAD Integration Docs
+- New component script
 
 ## Getting Started
 
