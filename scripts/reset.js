@@ -11,7 +11,7 @@ const resetReadme = resetReadmeIndex !== -1;
 
 const toRemove = [];
 
-const readmePath = path.join(srcPath, "README.md");
+const readmePath = path.join(rootPath, "README.md");
 
 function readmeReset() {
   const objectNameArg = process.argv[resetReadmeIndex + 1];
@@ -20,7 +20,7 @@ function readmeReset() {
   if (objectNameArg.startsWith('"') && objectNameArg.endsWith('"')) {
     objectName = objectNameArg.slice(1, objectNameArg.length - 1);
   } else {
-    objectName = import.meta.dirname.split('/').splice(-1)
+    objectName = rootPath.split('/').splice(-1)
   }
 
   return `# ${objectName}
