@@ -1,5 +1,5 @@
-// some small spacing to prevent z-fighting
-export const nothing = 0.03;
+export const nothing = 0.03; // some small spacing to prevent z-fighting
+export const tolerance = 0.2;
 
 export const hookRadius = 15;
 export const hookWidth = 5;
