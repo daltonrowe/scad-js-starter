@@ -2,7 +2,6 @@
 
 TODO:
 
-- Reset readme
 - Add index screenshot to readme
 - OpenSCAD Integration Docs
 - New component script
@@ -64,8 +63,7 @@ To remove all example code, and optionally existing git history, use `npm run re
 ```sh
 # remove all example code
 npm run reset
-npm run reset -- --git # ⚠️ remove existing git history
-npm run reset -- --readme "My Object" # wipe readme with new object name
+npm run reset readme "My Object" # wipe readme with new object name
 ```
 
 ## OpenSCAD Integration

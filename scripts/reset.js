@@ -5,8 +5,7 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { distPath, rootPath, srcPath } from "./utils.js";
 
-const resetGit = process.argv.includes("--git");
-const resetReadmeIndex = process.argv.findIndex((arg) => arg === "--readme");
+const resetReadmeIndex = process.argv.findIndex((arg) => arg === "readme");
 const resetReadme = resetReadmeIndex !== -1;
 
 const toRemove = [];
@@ -63,17 +62,15 @@ function collectFilesToRemove() {
   search([distPath]);
 
   if (resetReadme) toRemove.push(readmePath);
-  if (resetGit) toRemove.push(path.join(rootPath, ".git"));
 }
 
 async function fileRemovalPrompt() {
-  for (const r of toRemove) {
-    console.log(r);
-  }
+  for (const r of toRemove) console.log(r);
 
   const rl = readline.createInterface({ input, output });
+
   const answer = await rl.question(
-    "\n⚠️ These files will be deleted, proceed? (y/n) ",
+    "\n⚠️ These files will be deleted, proceed? (y/n): ",
   );
 
   rl.close();
@@ -90,6 +87,8 @@ function removeFiles() {
   fs.writeFileSync(constantsPath, constantsReset);
 
   if (resetReadme) fs.writeFileSync(readmePath, readmeReset());
+
+  console.log("\n✅ Reset complete! ");
 }
 
 collectFilesToRemove();
