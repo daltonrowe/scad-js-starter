@@ -21,7 +21,7 @@ const pngArgs = [
   "--autocenter",
   "--render",
   "--imgsize",
-  "1000,1000",
+  "600,400",
   "--projection",
   "o",
   scadPath,

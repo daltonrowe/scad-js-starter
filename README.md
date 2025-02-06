@@ -5,7 +5,7 @@ TODO:
 - OpenSCAD Integration Docs
 - New component script
 
-![](/dist/index.png?raw=true)
+![](./dist/index.png?raw=true)
 
 ## Quick Start
 
