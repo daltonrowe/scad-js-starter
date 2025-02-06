@@ -5,8 +5,24 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { distPath, rootPath, srcPath } from "./utils.js";
 
-const removeGit = process.argv[2] === "--remove-git";
+const resetGit = process.argv.includes("--git");
+const resetReadme = process.argv.includes("--readme");
+
 const toRemove = [];
+
+const readmePath = path.join(srcPath, "README.md");
+
+function readmeReset() {
+  return `# SCADESM Starter
+
+## Getting Started
+
+\`\`\`sh
+npm install
+npm run dev
+\`\`\`
+  `
+}
 
 const indexPath = path.join(srcPath, "index.js");
 const indexReset = `import { union } from "scad-js";
@@ -35,10 +51,11 @@ function findFiles(dirs) {
   }
 }
 
-findFiles([srcPath, "components"]);
+findFiles([srcPath]);
 findFiles([distPath]);
 
-if (removeGit) toRemove.push(path.join(rootPath, ".git"));
+if (resetReadme) toRemove.push(readmePath)
+if (resetGit) toRemove.push(path.join(rootPath, ".git"));
 
 for (const r of toRemove) {
   console.log(r);
@@ -46,7 +63,7 @@ for (const r of toRemove) {
 
 const rl = readline.createInterface({ input, output });
 const answer = await rl.question(
-  "\nThese files will be deleted, is this okay? (y/n) ",
+  "\nThese files will be deleted, proceed? (y/n) ",
 );
 rl.close();
 
@@ -57,6 +74,8 @@ if (answer === "y" || answer === "yes") {
 
   fs.writeFileSync(indexPath, indexReset);
   fs.writeFileSync(constantsPath, constantsReset);
+
+  fs.writeFileSync(readmePath, readmeReset())
 } else {
   console.log("Aborting!");
 }
