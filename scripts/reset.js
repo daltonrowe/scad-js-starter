@@ -9,7 +9,7 @@ const removeGit = process.argv[2] === "--remove-git";
 const toRemove = [];
 
 const indexPath = path.join(srcPath, 'index.js');
-const indexReset = `import { cylinder, union } from "scad-js";
+const indexReset = `import { union } from "scad-js";
 
 export default function () {
   return union();
