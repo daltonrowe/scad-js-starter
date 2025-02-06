@@ -6,14 +6,24 @@ import * as readline from "node:readline/promises";
 import { distPath, rootPath, srcPath } from "./utils.js";
 
 const resetGit = process.argv.includes("--git");
-const resetReadme = process.argv.includes("--readme");
+const resetReadmeIndex = process.argv.findIndex("--readme");
+const resetReadme = resetReadmeIndex !== -1;
 
 const toRemove = [];
 
 const readmePath = path.join(srcPath, "README.md");
 
 function readmeReset() {
-  return `# SCADESM Starter
+  const objectNameArg = process.argv[resetReadmeIndex + 1];
+  let objectName = "My Object";
+
+  if (objectNameArg.startsWith('"') && objectNameArg.endsWith('"')) {
+    objectName = objectNameArg.slice(1, objectNameArg.length - 1);
+  } else {
+    objectName = import.meta.dirname.split('/').splice(-1)
+  }
+
+  return `# ${objectName}
 
 ## Getting Started
 
@@ -21,7 +31,7 @@ function readmeReset() {
 npm install
 npm run dev
 \`\`\`
-  `
+  `;
 }
 
 const indexPath = path.join(srcPath, "index.js");
@@ -54,7 +64,7 @@ function findFiles(dirs) {
 findFiles([srcPath]);
 findFiles([distPath]);
 
-if (resetReadme) toRemove.push(readmePath)
+if (resetReadme) toRemove.push(readmePath);
 if (resetGit) toRemove.push(path.join(rootPath, ".git"));
 
 for (const r of toRemove) {
@@ -75,7 +85,7 @@ if (answer === "y" || answer === "yes") {
   fs.writeFileSync(indexPath, indexReset);
   fs.writeFileSync(constantsPath, constantsReset);
 
-  fs.writeFileSync(readmePath, readmeReset())
+  fs.writeFileSync(readmePath, readmeReset());
 } else {
   console.log("Aborting!");
 }
