@@ -17,7 +17,7 @@ function readmeReset() {
   const objectNameArg = process.argv[resetReadmeIndex + 1];
   let objectName = "My Object";
 
-  if (objectNameArg.startsWith('"') && objectNameArg.endsWith('"')) {
+  if (objectNameArg && objectNameArg.startsWith('"') && objectNameArg.endsWith('"')) {
     objectName = objectNameArg.slice(1, objectNameArg.length - 1);
   } else {
     objectName = rootPath.split('/').splice(-1)
@@ -25,7 +25,7 @@ function readmeReset() {
 
   return `# ${objectName}
 
-## Getting Started
+## Quick Start
 
 \`\`\`sh
 npm install

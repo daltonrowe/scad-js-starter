@@ -7,7 +7,7 @@ TODO:
 - OpenSCAD Integration Docs
 - New component script
 
-## Getting Started
+## Quick Start
 
 ```sh
 npm install
