@@ -6,7 +6,7 @@ import * as readline from "node:readline/promises";
 import { distPath, rootPath, srcPath } from "./utils.js";
 
 const resetGit = process.argv.includes("--git");
-const resetReadmeIndex = process.argv.findIndex("--readme");
+const resetReadmeIndex = process.argv.findIndex((arg) => arg === "--readme");
 const resetReadme = resetReadmeIndex !== -1;
 
 const toRemove = [];
