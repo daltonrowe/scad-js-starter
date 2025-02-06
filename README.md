@@ -2,9 +2,10 @@
 
 TODO:
 
-- Add index screenshot to readme
 - OpenSCAD Integration Docs
 - New component script
+
+![](/dist/index.png?raw=true)
 
 ## Quick Start
 
