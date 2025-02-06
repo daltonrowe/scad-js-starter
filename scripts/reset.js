@@ -15,13 +15,10 @@ const readmePath = path.join(rootPath, "README.md");
 
 function readmeReset() {
   const objectNameArg = process.argv[resetReadmeIndex + 1];
-  let objectName = "My Object";
-
-  if (objectNameArg && objectNameArg.startsWith('"') && objectNameArg.endsWith('"')) {
-    objectName = objectNameArg.slice(1, objectNameArg.length - 1);
-  } else {
-    objectName = rootPath.split('/').splice(-1)
-  }
+  const objectNameProvided = objectNameArg && !objectNameArg.startsWith("--");
+  const objectName = objectNameProvided
+    ? objectNameArg
+    : rootPath.split("/").splice(-1);
 
   return `# ${objectName}
 
@@ -46,7 +43,7 @@ const constantsReset = `export const nothing = 0.03; // some small spacing to pr
 export const tolerance = 0.2;
 `;
 
-function findFiles(dirs) {
+function search(dirs) {
   const currentPath = path.join(...dirs);
   const files = fs.readdirSync(currentPath);
 
@@ -54,30 +51,37 @@ function findFiles(dirs) {
     const filePath = path.join(currentPath, file);
 
     if (fs.lstatSync(filePath).isDirectory()) {
-      findFiles([filePath]);
+      search([filePath]);
     } else {
       if (!file.includes(".gitkeep")) toRemove.push(filePath);
     }
   }
 }
 
-findFiles([srcPath]);
-findFiles([distPath]);
+function collectFilesToRemove() {
+  search([srcPath]);
+  search([distPath]);
 
-if (resetReadme) toRemove.push(readmePath);
-if (resetGit) toRemove.push(path.join(rootPath, ".git"));
-
-for (const r of toRemove) {
-  console.log(r);
+  if (resetReadme) toRemove.push(readmePath);
+  if (resetGit) toRemove.push(path.join(rootPath, ".git"));
 }
 
-const rl = readline.createInterface({ input, output });
-const answer = await rl.question(
-  "\nThese files will be deleted, proceed? (y/n) ",
-);
-rl.close();
+async function fileRemovalPrompt() {
+  for (const r of toRemove) {
+    console.log(r);
+  }
 
-if (answer === "y" || answer === "yes") {
+  const rl = readline.createInterface({ input, output });
+  const answer = await rl.question(
+    "\n⚠️ These files will be deleted, proceed? (y/n) ",
+  );
+
+  rl.close();
+
+  return answer === "y" || answer === "yes";
+}
+
+function removeFiles() {
   for (const r of toRemove) {
     fs.rmSync(r);
   }
@@ -86,6 +90,8 @@ if (answer === "y" || answer === "yes") {
   fs.writeFileSync(constantsPath, constantsReset);
 
   fs.writeFileSync(readmePath, readmeReset());
-} else {
-  console.log("Aborting!");
 }
+
+collectFilesToRemove();
+const proceedWithRemoval = await fileRemovalPrompt();
+proceedWithRemoval ? removeFiles() : console.log("Aborting!");
