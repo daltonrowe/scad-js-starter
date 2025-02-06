@@ -8,17 +8,17 @@ import { distPath, rootPath, srcPath } from "./utils.js";
 const removeGit = process.argv[2] === "--remove-git";
 const toRemove = [];
 
-const indexPath = path.join(srcPath, 'index.js');
+const indexPath = path.join(srcPath, "index.js");
 const indexReset = `import { union } from "scad-js";
 
 export default function () {
   return union();
 }
-`
-const constantsPath = path.join(srcPath, 'constants.js');
+`;
+const constantsPath = path.join(srcPath, "constants.js");
 const constantsReset = `export const nothing = 0.03; // some small spacing to prevent z-fighting
 export const tolerance = 0.2;
-`
+`;
 
 function findFiles(dirs) {
   const currentPath = path.join(...dirs);
@@ -55,8 +55,8 @@ if (answer === "y" || answer === "yes") {
     fs.rmSync(r);
   }
 
-  fs.writeFileSync(indexPath, indexReset)
-  fs.writeFileSync(constantsPath, constantsReset)
+  fs.writeFileSync(indexPath, indexReset);
+  fs.writeFileSync(constantsPath, constantsReset);
 } else {
   console.log("Aborting!");
 }
