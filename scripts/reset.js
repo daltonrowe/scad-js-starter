@@ -89,7 +89,7 @@ function removeFiles() {
   fs.writeFileSync(indexPath, indexReset);
   fs.writeFileSync(constantsPath, constantsReset);
 
-  fs.writeFileSync(readmePath, readmeReset());
+  if (resetReadme) fs.writeFileSync(readmePath, readmeReset());
 }
 
 collectFilesToRemove();
