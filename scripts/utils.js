@@ -4,6 +4,13 @@ import { spawn } from "node:child_process";
 import * as path from "node:path";
 
 export const srcPath = path.join(import.meta.dirname, "..", "src");
+export const constantsPath = path.join(srcPath, "constants.js");
+export const componentsPath = path.join(
+  import.meta.dirname,
+  "..",
+  "src",
+  "components",
+);
 export const distPath = path.join(import.meta.dirname, "..", "dist");
 export const rootPath = path.join(import.meta.dirname, "..");
 

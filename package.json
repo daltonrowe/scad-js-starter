@@ -2,6 +2,7 @@
   "name": "object-keyhook",
   "scripts": {
     "dev": "node scripts/dev.js",
+    "new": "node scripts/new.js",
     "lint": "biome check --write --unsafe",
     "render": "node scripts/render.js",
     "publish": "node scripts/publish.js",
