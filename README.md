@@ -1,9 +1,5 @@
 # SCADESM Starter
 
-TODO:
-
-- OpenSCAD Integration Docs
-
 ![](./dist/index.png?raw=true)
 
 ## Quick Start
@@ -21,7 +17,19 @@ This command will also attempt to start OpenSCAD for the specified file. See Ope
 ```sh
 # watch for changes from src/index.js, start OpenSCAD
 npm run dev
-run run dev hook # src/components/hook.js
+npm run dev hook # src/components/hook.js
+```
+
+### New
+
+To quickly generate a new component js file, use `npm run new`.
+This command will also attempt to start OpenSCAD for the specified file. See OpenSCAD integration below for more info.
+
+```sh
+# create a new file in src/components
+npm run new myObject
+run run new myObject cube # create cube constants and imports
+run run new myObject cylinder # create cylinder constants and imports
 ```
 
 ### Build
@@ -41,7 +49,7 @@ To generate a .stl, .png, and .scad file from from index.js or a component, use 
 ```sh
 # generate stl, png, scad from src/index.js
 npm run build
-run run build hook # src/components/hook.js
+npm run build hook # src/components/hook.js
 ```
 
 ### Lint
@@ -68,7 +76,23 @@ npm run reset readme "My Object" # wipe readme with new object name
 
 ## OpenSCAD Integration
 
-TODO
+The command scripts in `package.json` rely on `openscad` being available in your path, in order to call OpenSCAD via it's CLI.
+
+#### Mac
+
+```zsh
+# use openscad app via command line on Mac with zsh
+path+=('/Applications/OpenSCAD.app/Contents/MacOS/')
+export PATH
+```
+
+## Roadmap
+
+- Swap to camelcase function names here, and in ScadESM
+- Add upgrade script for 1.0 repos (swap to camelcase)
+- Brand as ObjectKit
+- Add more new object scripts
+- OpenSCAD integration details on Windows / Linux
 
 ## Acknowledgements
 
