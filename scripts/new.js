@@ -7,10 +7,10 @@ const shape = process.argv[3];
 
 const fileTemplates = {
   cube: (component) => `import { cube } from "scad-js";
-import { ${component}Width, ${component}Depth, ${component}Height } from "../constants.js"
+import { ${component}Depth, ${component}Height, ${component}Width } from "../constants.js"
 
 export default function () {
-  return cube([${component}Depth, ${component}Height, ${component}Width]);
+  return cube([${component}Width, ${component}Depth, ${component}Height]);
 }
 `,
 
@@ -50,6 +50,6 @@ fs.writeFileSync(path.join(componentsPath, `${component}.js`), componentFile);
 
 const constantsFile = fs.readFileSync(constantsPath, { encoding: "UTF-8" });
 const constantsArray = constantsFile.split("\n");
-constantsArray.push(...constants);
+constantsArray.push(...constants, "");
 
 fs.writeFileSync(constantsPath, constantsArray.join("\n"));

@@ -1,5 +1,5 @@
 {
-  "name": "object-keyhook",
+  "name": "scad-esm-starter",
   "scripts": {
     "dev": "node scripts/dev.js",
     "new": "node scripts/new.js",
@@ -10,10 +10,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@biomejs/biome": "^1.9.4",
     "scad-js": "git@github.com:daltonrowe/scad-js-esm.git"
   },
   "version": "1.0.0",
   "main": "src/index.js",
-  "license": "MIT"
+  "license": "GPLv3"
 }

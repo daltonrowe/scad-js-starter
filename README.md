@@ -88,6 +88,8 @@ export PATH
 
 ## Roadmap
 
+- Reset LICENSE on reset
+- Reset package json on reset
 - Swap to camelcase function names here, and in ScadESM
 - Add upgrade script for 1.0 repos (swap to camelcase)
 - Brand as ObjectKit
