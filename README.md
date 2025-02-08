@@ -3,7 +3,6 @@
 TODO:
 
 - OpenSCAD Integration Docs
-- New component script
 
 ![](./dist/index.png?raw=true)
 
