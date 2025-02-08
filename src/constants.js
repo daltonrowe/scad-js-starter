@@ -19,3 +19,7 @@ export const padDepth = 1;
 
 export const holeRadius = 1.6;
 export const holeHeight = bodyThickness + nothing;
+
+export const pizzaWidth = 20;
+export const pizzaDepth = 20;
+export const pizzaHeight = 10;

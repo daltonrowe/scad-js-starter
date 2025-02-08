@@ -10,12 +10,12 @@ const fileTemplates = {
 import { ${component}Width, ${component}Depth, ${component}Height } from "../constants.js"
 
 export default function () {
-  return cube([${component}Width, ${component}Depth, ${component}Height]);
+  return cube([${component}Depth, ${component}Height, ${component}Width]);
 }
 `,
 
   cylinder: (component) => `import { cylinder } from "scad-js";
-import { ${component}Height, ${component}Diameter } from "../constants.js"
+import { ${component}Diameter, ${component}Height } from "../constants.js"
 
 export default function () {
   return cylinder(${component}Height, ${component}Diameter / 2);
