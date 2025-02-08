@@ -48,7 +48,7 @@ const constants = constantsTemplates[shape ?? "default"];
 
 fs.writeFileSync(path.join(componentsPath, `${component}.js`), componentFile);
 
-const constantsFile = fs.readFileSync(constantsPath, "UTF-8");
+const constantsFile = fs.readFileSync(constantsPath, { encoding: "UTF-8" });
 const constantsArray = constantsFile.split("\n");
 constantsArray.push(...constants);
 
