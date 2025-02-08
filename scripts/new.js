@@ -1,6 +1,6 @@
-import * as path from "node:path";
 import * as fs from "node:fs";
-import { constantsPath } from "./utils.js";
+import * as path from "node:path";
+import { componentsPath, constantsPath } from "./utils.js";
 
 const component = process.argv[2];
 const shape = process.argv[3];
