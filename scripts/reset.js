@@ -21,6 +21,8 @@ function readmeReset() {
 
   return `# ${objectName}
 
+![](./dist/index.png?raw=true)
+
 ## Quick Start
 
 \`\`\`sh
@@ -88,7 +90,7 @@ function removeFiles() {
 
   if (resetReadme) fs.writeFileSync(readmePath, readmeReset());
 
-  console.log("\n✅ Reset complete! ");
+  console.log("\nReset complete! ");
 }
 
 collectFilesToRemove();
