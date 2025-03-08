@@ -43,8 +43,8 @@ const constantsTemplates = {
   ],
 };
 
-const componentFile = fileTemplates[shape ?? "default"](component);
-const constants = constantsTemplates[shape ?? "default"](component);
+const componentFile = fileTemplates[shape ?? "cube"](component);
+const constants = constantsTemplates[shape ?? "cube"](component);
 
 fs.writeFileSync(path.join(componentsPath, `${component}.js`), componentFile);
 
