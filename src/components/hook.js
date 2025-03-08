@@ -1,4 +1,4 @@
-import { square } from "scad-js";
+import { square } from "scad-js-esm";
 import { hookRadius, hookThickness } from "../constants.js";
 
 function hook() {

@@ -6,7 +6,7 @@ const component = process.argv[2];
 const shape = process.argv[3];
 
 const fileTemplates = {
-  cube: (component) => `import { cube } from "scad-js";
+  cube: (component) => `import { cube } from "scad-js-esm";
 import { ${component}Depth, ${component}Height, ${component}Width } from "../constants.js"
 
 export default function () {
@@ -14,7 +14,7 @@ export default function () {
 }
 `,
 
-  cylinder: (component) => `import { cylinder } from "scad-js";
+  cylinder: (component) => `import { cylinder } from "scad-js-esm";
 import { ${component}Diameter, ${component}Height } from "../constants.js"
 
 export default function () {
@@ -23,7 +23,7 @@ export default function () {
 `,
 
   default: `
-import { union } from "scad-js";
+import { union } from "scad-js-esm";
 
 export default function () {
   return union();

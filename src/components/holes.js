@@ -1,4 +1,4 @@
-import { cylinder, union } from "scad-js";
+import { cylinder, union } from "scad-js-esm";
 import { bodySpacing, holeHeight, holeRadius } from "../constants.js";
 
 export default function () {

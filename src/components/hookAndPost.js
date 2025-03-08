@@ -1,4 +1,4 @@
-import { cube, union } from "scad-js";
+import { cube, union } from "scad-js-esm";
 import {
   hookRadius,
   hookThickness,

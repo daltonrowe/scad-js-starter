@@ -10,7 +10,7 @@
   },
   "type": "module",
   "dependencies": {
-    "scad-js": "git@github.com:daltonrowe/scad-js-esm.git"
+    "scad-js-esm": "git@github.com:daltonrowe/scad-js-esm.git"
   },
   "version": "1.0.0",
   "main": "src/index.js",

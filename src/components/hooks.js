@@ -1,4 +1,4 @@
-import { union } from "scad-js";
+import { union } from "scad-js-esm";
 import {
   bodySpacing,
   bodyThickness,

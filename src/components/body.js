@@ -1,4 +1,4 @@
-import { cube, difference } from "scad-js";
+import { cube, difference } from "scad-js-esm";
 import { bodyHeight, bodyLength, bodyThickness } from "../constants.js";
 import holes from "./holes.js";
 import hooks from "./hooks.js";

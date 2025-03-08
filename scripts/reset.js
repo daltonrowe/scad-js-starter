@@ -33,7 +33,7 @@ npm run dev
 }
 
 const indexPath = path.join(srcPath, "index.js");
-const indexReset = `import { union } from "scad-js";
+const indexReset = `import { union } from "scad-js-esm";
 
 export default function () {
   return union();
