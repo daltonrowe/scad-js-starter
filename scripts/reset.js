@@ -5,19 +5,12 @@ import { stdin as input, stdout as output } from "node:process";
 import * as readline from "node:readline/promises";
 import { distPath, rootPath, srcPath } from "./utils.js";
 
-const resetReadmeIndex = process.argv.findIndex((arg) => arg === "readme");
-const resetReadme = resetReadmeIndex !== -1;
-
 const toRemove = [];
 
 const readmePath = path.join(rootPath, "README.md");
 
 function readmeReset() {
-  const objectNameArg = process.argv[resetReadmeIndex + 1];
-  const objectNameProvided = objectNameArg && !objectNameArg.startsWith("--");
-  const objectName = objectNameProvided
-    ? objectNameArg
-    : rootPath.split("/").splice(-1);
+  const objectName = rootPath.split("/").splice(-1);
 
   return `# ${objectName}
 
@@ -88,7 +81,7 @@ function removeFiles() {
   fs.writeFileSync(indexPath, indexReset);
   fs.writeFileSync(constantsPath, constantsReset);
 
-  if (resetReadme) fs.writeFileSync(readmePath, readmeReset());
+  fs.writeFileSync(readmePath, readmeReset());
 
   console.log("\nReset complete! ");
 }
