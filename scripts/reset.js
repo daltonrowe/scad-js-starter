@@ -56,7 +56,7 @@ function collectFilesToRemove() {
   search([srcPath]);
   search([distPath]);
 
-  if (resetReadme) toRemove.push(readmePath);
+  toRemove.push(readmePath);
 }
 
 async function fileRemovalPrompt() {
